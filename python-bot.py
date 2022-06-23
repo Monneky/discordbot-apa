@@ -1,8 +1,11 @@
 ## Appa bot
 import discord
 import os
+from dotenv import load_dotenv
 
+load_dotenv()
 client = discord.Client()
+TOKEN = os.getenv('TOKEN')
 
 @client.event
 async def on_ready():
@@ -16,4 +19,4 @@ async def on_message(message):
     if message.content.startswith('$hello'):
         await message.channel.send('Hello!')
 
-client.run(os.getenv('TOKEN'))
+client.run(TOKEN)
